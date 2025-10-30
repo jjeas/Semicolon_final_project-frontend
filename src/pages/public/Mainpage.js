@@ -7,7 +7,7 @@ const MainPage = () => {
           {/* 왼쪽 메뉴 */}
           <aside className="col-span-3 bg-gray-100 p-4 grid grid-cols-2 gap-2 rounded">
             <button className="w-full bg-white py-14 border rounded">
-              이용안내
+              이용안내 sososoosdhjfkasjfasjfsjdl ;fweo;j ewar/l
             </button>
             <button className="w-full bg-white py-14 border rounded">
               프로그램 안내
