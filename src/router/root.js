@@ -7,6 +7,7 @@ const { createBrowserRouter } = require("react-router-dom");
 const Loading = () => <div>Loading...</div>;
 const Main = lazy(() => import("../pages/public/Mainpage"));
 const Admin = lazy(() => import("../pages/admin/AdminPage"));
+const Program = lazy(() => import("../pages/program/ProgramListPage"));
 
 const root = createBrowserRouter([
   {
@@ -18,6 +19,14 @@ const root = createBrowserRouter([
         element: (
           <Suspense>
             <Main />
+          </Suspense>
+        ),
+      },
+      {
+        path: `program/:programId`,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Program />
           </Suspense>
         ),
       },
