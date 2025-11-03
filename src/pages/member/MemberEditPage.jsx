@@ -1,17 +1,11 @@
-import React from 'react'
-
 const MemberEditPage = () => {
   return (
     <div>
         <ul>
+          정보 수정하기~
             <li>
-                회원정보 수정
-            </li>
-            <li>
-                비밀번호 수정
-            </li>
-            <li>
-                
+                아이디 수정
+                <input type="text" />
             </li>
         </ul>
     </div>
