@@ -1,6 +1,7 @@
-import React from 'react'
+
 
 const MemberEditPage = () => {
+  console.log("여기들어롸라")
   return (
     <div>
         <ul>
@@ -9,9 +10,6 @@ const MemberEditPage = () => {
             </li>
             <li>
                 비밀번호 수정
-            </li>
-            <li>
-                
             </li>
         </ul>
     </div>
