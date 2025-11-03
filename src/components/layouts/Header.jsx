@@ -18,7 +18,7 @@ const Header = () => {
           회원가입
         </Link>
         {/* 마이페이지는 ALL_NAV_MENUS에 있지만, 여기서 별도 Link로 처리 */}
-        <Link to="/mypage" className="hover:underline">
+        <Link to="/member" className="hover:underline">
           마이페이지
         </Link>
       </div>
