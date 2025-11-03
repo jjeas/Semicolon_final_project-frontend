@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import Layout from "../components/layouts/Layout";
 import adminRouter from "./adminRouter";
+import memberMyPageRouter from "./memberMyPageRouter";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -8,6 +9,7 @@ const Loading = () => <div>Loading...</div>;
 const Main = lazy(() => import("../pages/public/Mainpage"));
 const Admin = lazy(() => import("../pages/admin/AdminPage"));
 const Program = lazy(() => import("../pages/program/ProgramListPage"));
+const MemberMyPage = lazy(() => import("../pages/member/MemberMyPage"));
 
 const root = createBrowserRouter([
   {
@@ -38,6 +40,20 @@ const root = createBrowserRouter([
           </Suspense>
         ),
         children: adminRouter(),
+      },
+      {
+        path: "member",
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <MemberMyPage />
+              </Suspense>
+            ),
+          },
+          ...memberMyPageRouter(),
+        ],
       },
     ],
   },
