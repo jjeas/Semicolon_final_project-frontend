@@ -7,6 +7,9 @@ const { createBrowserRouter } = require("react-router-dom");
 const Loading = () => <div>Loading...</div>;
 const Main = lazy(() => import("../pages/public/Mainpage"));
 const Admin = lazy(() => import("../pages/admin/AdminPage"));
+const Login = lazy(() => import("../pages/auth/LoginPage"));
+const Notice = lazy(() => import("../pages/notice/NoticeListPage"));
+const NoticeDetail = lazy(() => import("../pages/notice/NoticeReadPage"));
 
 const root = createBrowserRouter([
   {
@@ -29,6 +32,30 @@ const root = createBrowserRouter([
           </Suspense>
         ),
         children: adminRouter(),
+      },
+      {
+        path: "login",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Login />
+          </Suspense>
+        ),
+      },
+      {
+        path: "notice",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Notice />
+          </Suspense>
+        ),
+      },
+      {
+        path: "notice/:id",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <NoticeDetail />
+          </Suspense>
+        ),
       },
     ],
   },
