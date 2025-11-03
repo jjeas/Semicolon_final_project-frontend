@@ -1,15 +1,11 @@
-
-
 const MemberEditPage = () => {
-  console.log("여기들어롸라")
   return (
     <div>
         <ul>
+          정보 수정하기~
             <li>
-                회원정보 수정
-            </li>
-            <li>
-                비밀번호 수정
+                아이디 수정
+                <input type="text" />
             </li>
         </ul>
     </div>
