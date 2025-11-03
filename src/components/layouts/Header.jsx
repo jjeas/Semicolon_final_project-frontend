@@ -24,6 +24,7 @@ const Header = () => {
       </div>
 
       {/* 메인 네비게이션 (Sub Menu 드롭다운을 위해 relative 설정) */}
+      
       <nav
         className="relative flex justify-between items-center max-w-7xl mx-auto px-10 py-7 border-b border-gray-200"
         onMouseLeave={() => setHoveredMenuId(null)} // NAV 영역 벗어나면 드롭다운 닫기
