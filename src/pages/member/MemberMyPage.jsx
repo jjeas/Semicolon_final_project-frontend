@@ -8,11 +8,16 @@ const MemberMyPage = () => {
         <li>
           <Link to="memberEdit">정보 수정</Link>
         </li>
-        <li>예약 내역 조회</li>
-        <li>1:1 문의</li>
-        <li>파트너 신청</li>
+        <li>
+          <Link to="reservation">예약 내역 조회</Link>
+        </li>
+        <li>
+          <Link to="inquiry">1:1 문의</Link>
+        </li>
+        <li>
+          <Link to="partnerRequest">파트너 신청</Link>
+        </li>
       </ul>
-
     </div>
   );
 };
