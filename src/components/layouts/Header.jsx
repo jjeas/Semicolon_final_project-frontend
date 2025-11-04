@@ -1,8 +1,10 @@
+import useCustomMove from "../../hooks/useCustomMove";
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { allMenuItems } from "../../util/navData";
 
 const Header = () => {
+  const {moveToLogin, moveToMain}=useCustomMove()
   const location = useLocation();
   // 마우스가 올라간 1차 메뉴의 ID를 저장 (드롭다운 제어)
   const [hoveredMenuId, setHoveredMenuId] = useState(null);
@@ -30,6 +32,7 @@ const Header = () => {
         onMouseLeave={() => setHoveredMenuId(null)} // NAV 영역 벗어나면 드롭다운 닫기
       >
         {/* 로고 */}
+
         <Link to="/" className="text-[30px] font-bold text-gray-800">
           그린체육관
         </Link>
