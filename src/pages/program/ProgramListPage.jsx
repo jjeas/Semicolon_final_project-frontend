@@ -13,10 +13,16 @@ const ProgramListPage = () => {
   const { programId } = useParams();
   const [data, setData] = useState(initState);
   useEffect(() => {
-    getOne(programId).then((data) => {
-      console.log(data);
-      setData(data);
-    });
+    const f = async () => {
+      try {
+        const res = await getOne(programId);
+        console.log("가져온 Data", res);
+        setData(res);
+      } catch (error) {
+        console.error("가져오기 실패", error);
+      }
+    };
+    f();
   }, [programId]);
 
   return (

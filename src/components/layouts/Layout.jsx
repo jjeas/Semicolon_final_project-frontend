@@ -8,6 +8,7 @@ const Layout = () => {
 
   // 현재 경로가 메인 페이지('/')인지 확인
   const isMainPage = location.pathname === "/";
+  const isAdminPage = location.pathname === "/admin";
   const shouldShowSidebar = !isMainPage;
 
   // 서브 페이지일 때만 flex 클래스를 부모 컨테이너에 적용
@@ -15,8 +16,7 @@ const Layout = () => {
     shouldShowSidebar ? "flex" : ""
   }`;
 
-  // 🚩 메인 페이지 전용 레이아웃 반환 (사이드바 없음, 단일 main 태그)
-  if (isMainPage) {
+  if (isMainPage || isAdminPage) {
     return (
       <div className="flex flex-col min-h-screen">
         <Header />
@@ -28,7 +28,6 @@ const Layout = () => {
     );
   }
 
-  // 🚩 서브 페이지 전용 레이아웃 반환 (사이드바 + 콘텐츠 좌우 분할)
   return (
     <div className="flex flex-col min-h-screen">
       {/* 상단 고정 Header */}
