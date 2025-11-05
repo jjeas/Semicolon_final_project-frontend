@@ -67,6 +67,8 @@ const root = createBrowserRouter([
             <NoticeDetail />
           </Suspense>
         ),
+      },
+      {
         path: "member",
         children: [
           {
