@@ -10,7 +10,7 @@ const MemberMyPage = () => {
       <ul className="space-y-4">
         <li>
           <Link
-            to="/memberEdit/1"
+            to="/member/memberEdit/1"
             className="block bg-blue-50 hover:bg-blue-100 text-gray-800 font-medium py-3 px-4 rounded-lg shadow-sm transition"
           >
             정보 수정
@@ -18,7 +18,7 @@ const MemberMyPage = () => {
         </li>
         <li>
           <Link
-            to="reservation"
+            to="/member/reservation"
             className="block bg-blue-50 hover:bg-blue-100 text-gray-800 font-medium py-3 px-4 rounded-lg shadow-sm transition"
           >
             예약 내역 조회
@@ -26,7 +26,7 @@ const MemberMyPage = () => {
         </li>
         <li>
           <Link
-            to="inquiry"
+            to="/member/inquiry"
             className="block bg-blue-50 hover:bg-blue-100 text-gray-800 font-medium py-3 px-4 rounded-lg shadow-sm transition"
           >
             1:1 문의
@@ -34,7 +34,7 @@ const MemberMyPage = () => {
         </li>
         <li>
           <Link
-            to="partnerRequest"
+            to="/member/partnerRequest"
             className="block bg-blue-50 hover:bg-blue-100 text-gray-800 font-medium py-3 px-4 rounded-lg shadow-sm transition"
           >
             파트너 신청
