@@ -1,3 +1,5 @@
+import { Map, MapMarker } from "react-kakao-maps-sdk";
+
 const MainPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
@@ -42,7 +44,17 @@ const MainPage = () => {
               <p>공지</p>
             </div>
             <div className="flex-1 bg-gray-100 p-4 rounded flex justify-center items-center">
-              <p>지도API</p>
+              <Map
+                center={{ lat: 37.3498095, lng: 127.1069927 }}
+                style={{ width: "300px", height: "200px" }}
+                level={5}
+              >
+                <MapMarker position={{ lat: 37.3498095, lng: 127.1069927 }}>
+                  {/* <div className=" text-primary-dark border border-primary-light rounded-xl px-3 py-1.5 shadow-lg text-sm font-semibold">
+                    그린 체육관
+                  </div> */}
+                </MapMarker>
+              </Map>
             </div>
           </aside>
         </div>

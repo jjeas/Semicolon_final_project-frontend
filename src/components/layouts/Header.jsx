@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { allMenuItems } from "../../util/navData";
 
 const Header = () => {
-  const {moveToLogin, moveToMain}=useCustomMove()
+  const { moveToLogin, moveToMain } = useCustomMove();
   const location = useLocation();
   // 마우스가 올라간 1차 메뉴의 ID를 저장 (드롭다운 제어)
   const [hoveredMenuId, setHoveredMenuId] = useState(null);
@@ -46,7 +46,6 @@ const Header = () => {
             const isActive = location.pathname.startsWith(menu.path);
 
             return (
-              // 1차 메뉴 항목: relative와 이벤트 핸들러 설정
               <li
                 key={menu.id}
                 className="relative"
@@ -66,8 +65,6 @@ const Header = () => {
                   {menu.title}
                 </Link>
 
-                {/* 🌟 2차 메뉴 드롭다운 영역 */}
-                {/* subMenus가 있고, 현재 ID가 hoveredMenuId와 일치할 때 렌더링 */}
                 {menu.subMenus && (
                   <div
                     className={`
@@ -85,7 +82,6 @@ const Header = () => {
                       <Link
                         key={subMenu.id}
                         to={subMenu.path}
-                        // 드롭다운 메뉴 항목 클릭 시, hoveredMenuId를 초기화하여 드롭다운 닫기
                         onClick={() => setHoveredMenuId(null)}
                         className="block px-4 py-2 text-base text-gray-700 hover:bg-gray-100 whitespace-nowrap"
                       >
