@@ -2,20 +2,43 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const MemberMyPage = () => {
+
   return (
-    <div>
-      <ul>
+    <div className="max-w-md mx-auto p-6">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">마이페이지</h2>
+
+      <ul className="space-y-4">
         <li>
-          <Link to="memberEdit">정보 수정</Link>
+          <Link
+            to="/memberEdit/1"
+            className="block bg-blue-50 hover:bg-blue-100 text-gray-800 font-medium py-3 px-4 rounded-lg shadow-sm transition"
+          >
+            정보 수정
+          </Link>
         </li>
         <li>
-          <Link to="reservation">예약 내역 조회</Link>
+          <Link
+            to="reservation"
+            className="block bg-blue-50 hover:bg-blue-100 text-gray-800 font-medium py-3 px-4 rounded-lg shadow-sm transition"
+          >
+            예약 내역 조회
+          </Link>
         </li>
         <li>
-          <Link to="inquiry">1:1 문의</Link>
+          <Link
+            to="inquiry"
+            className="block bg-blue-50 hover:bg-blue-100 text-gray-800 font-medium py-3 px-4 rounded-lg shadow-sm transition"
+          >
+            1:1 문의
+          </Link>
         </li>
         <li>
-          <Link to="partnerRequest">파트너 신청</Link>
+          <Link
+            to="partnerRequest"
+            className="block bg-blue-50 hover:bg-blue-100 text-gray-800 font-medium py-3 px-4 rounded-lg shadow-sm transition"
+          >
+            파트너 신청
+          </Link>
         </li>
       </ul>
     </div>

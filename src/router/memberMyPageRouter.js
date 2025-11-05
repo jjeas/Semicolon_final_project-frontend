@@ -8,7 +8,7 @@ const Loading = () => <div>Loading...</div>;
 const memberMyPageRouter = () => {
   return [
     {
-        path: "memberEdit", 
+        path: "memberEdit/:id", 
         element: (
             <Suspense fallback= {<Loading/>}>
                 <MemberEdit/>
