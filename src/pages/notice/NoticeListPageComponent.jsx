@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { formatter, getNoticeList, increaseViewCount, } from '../../api/noticeApi'
 
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import {  useSearchParams } from 'react-router-dom'
 import useCustomMove from '../../hooks/useCustomMove'
 
 const NoticeListPageComponent = () => {
@@ -129,7 +129,7 @@ const NoticeListPageComponent = () => {
               </td>
             </tr>
           ) : (
-            filteredNotice.map(i => (
+            filteredNotice.unshift().map(i => (
               <tr
                 key={i.noticeId} // key는 map의 최상위 요소에
                 onClick={() => addViewCount(i.noticeId)}
