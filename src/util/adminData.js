@@ -1,13 +1,13 @@
-export const allMenuItems = [
+export const adminAllMenuItems = [
   {
     id: "guide",
-    title: "이용안내",
+    title: "추가예정",
     path: "/guide", // 1차 메뉴의 기본 경로
     subMenus: [
       // 2차 메뉴 (사이드바 내용)
       {
         id: "",
-        title: "운영시간",
+        title: "운영시간", //운영시간수정
         path: "",
       },
       {
@@ -34,24 +34,24 @@ export const allMenuItems = [
   },
   {
     id: "program",
-    title: "프로그램",
-    path: "/program", // 1차 메뉴의 기본 경로
+    title: "프로그램 수정",
+    path: "/admin/program", // 1차 메뉴의 기본 경로
     subMenus: [
       // 2차 메뉴 (사이드바 내용)
       {
         id: "swim",
         title: "수영",
-        path: "/program/1",
+        path: "/admin/program/1",
       },
       {
         id: "health",
         title: "헬스",
-        path: "/program/2",
+        path: "/admin/program/2",
       },
       {
         id: "golf",
         title: "골프",
-        path: "/program/3",
+        path: "/admin/program/3",
       },
       {
         id: "dance",
@@ -105,9 +105,9 @@ export const allMenuItems = [
         path: "",
       },
       {
-        id: "faq",
+        id: "",
         title: "자주묻는질문",
-        path: "/faq",
+        path: "",
       },
       {
         id: "",

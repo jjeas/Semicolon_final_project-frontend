@@ -1,9 +1,9 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Header from "./Header";
 import Footer from "./Footer";
-import Sidebar from "./Sidebar";
+import AdminHeader from "./AdminHeader";
+import AdminSidebar from "./AdminSidebar";
 
-const Layout = () => {
+const AdminLayout = () => {
   const location = useLocation();
 
   const isMainPage = location.pathname === "/";
@@ -13,11 +13,10 @@ const Layout = () => {
   const contentWrapperClasses = `flex-1 w-full max-w-screen-2xl mx-auto ${
     shouldShowSidebar ? "flex" : ""
   }`;
-
   if (isMainPage) {
     return (
       <div className="flex flex-col min-h-screen">
-        <Header />
+        <AdminHeader />
         <main className="flex-1 bg-gray-100">
           <Outlet />
         </main>
@@ -28,9 +27,9 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <AdminHeader />
       <div className={contentWrapperClasses}>
-        <Sidebar />
+        <AdminSidebar />
         <main className={`flex-1 bg-white p-6 lg:pl-8`}>
           <Outlet />
         </main>
@@ -40,4 +39,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default AdminLayout;
