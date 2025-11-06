@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getOne } from "../../../api/programApi";
-import { modify } from "../../../api/adminApi";
+import { programModify } from "../../../api/adminApi";
+import { useLocation } from "react-router-dom";
 
 const initState = {
   content: "",
@@ -8,6 +9,10 @@ const initState = {
 };
 const ProgramEditPage = ({ moveUrl }) => {
   const [data, setData] = useState(initState);
+
+  // const location = useLocation();
+  // const isAdmin = location.pathname.startsWith("/admin");
+
   useEffect(() => {
     const f = async () => {
       try {
@@ -29,7 +34,7 @@ const ProgramEditPage = ({ moveUrl }) => {
     e.preventDefault();
     const f = async () => {
       try {
-        const res = await modify(moveUrl, data);
+        const res = await programModify(moveUrl, data);
         console.log(res);
       } catch (error) {
         console.error("보내기 실패", error);
