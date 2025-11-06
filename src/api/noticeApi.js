@@ -9,7 +9,7 @@ export const getNoticeList = async () => {
     if (res.data == null) console.log("공지사항 data 없음")
     return res.data
 }
-export const registerNotice = async (notice) => {
+export const registerNotice = async (notice) => { 
     const res = await axios.post(`${API_HOST_URL}/register`, notice)
     console.log("백엔드에 보낸 notice 등록 데이터", res.data)
     return res.data
