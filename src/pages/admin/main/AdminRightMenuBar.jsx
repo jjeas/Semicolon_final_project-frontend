@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { allMenuItems } from "../../util/navData";
+import { allMenuItems } from "../../../util/navData";
 
 const AdminRightMenuBar = ({ onSelectSub, moveUrl }) => {
   const [selectMain, setSelectMain] = useState(null);

@@ -2,15 +2,17 @@ import { lazy, Suspense } from "react";
 import Layout from "../components/layouts/Layout";
 import adminRouter from "./adminRouter";
 import memberMyPageRouter from "./memberMyPageRouter";
+import AdminLayout from "../components/layouts/AdminLayout";
 
 const { createBrowserRouter } = require("react-router-dom");
 
 const Loading = () => <div>Loading...</div>;
 const Main = lazy(() => import("../pages/public/Mainpage"));
-const Admin = lazy(() => import("../pages/admin/AdminPage"));
+const Admin = lazy(() => import("../pages/admin/main/AdminPage"));
 const Login = lazy(() => import("../pages/auth/LoginPage"));
 const Notice = lazy(() => import("../pages/notice/NoticeListPage"));
 const NoticeDetail = lazy(() => import("../pages/notice/NoticeReadPage"));
+const FAQ = lazy(() => import("../pages/faq/FaqListPage"));
 const Program = lazy(() => import("../pages/program/ProgramListPage"));
 const MemberMyPage = lazy(() => import("../pages/member/MemberMyPage"));
 
@@ -36,15 +38,6 @@ const root = createBrowserRouter([
         ),
       },
       {
-        path: "admin",
-        element: (
-          <Suspense fallback={<Loading />}>
-            <Admin />
-          </Suspense>
-        ),
-        children: adminRouter(),
-      },
-      {
         path: "login",
         element: (
           <Suspense fallback={<Loading />}>
@@ -68,6 +61,14 @@ const root = createBrowserRouter([
           </Suspense>
         ),
       },
+       {
+        path: "faq",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <FAQ />
+          </Suspense>
+        ),
+      },
       {
         path: "member",
         children: [
@@ -80,6 +81,25 @@ const root = createBrowserRouter([
             ),
           },
           ...memberMyPageRouter(),
+        ],
+      },
+    ],
+  },
+  {
+    path: "admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense>
+                <Admin />
+              </Suspense>
+            ),
+          },
+          ...adminRouter(),
         ],
       },
     ],

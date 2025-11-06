@@ -1,5 +1,5 @@
 import React from "react";
-import ProgramEditPage from "./edit/ProgramEditPage";
+import ProgramEditPage from "../program/ProgramEditPage";
 
 const AdminEditArea = ({ subMenu, moveUrl }) => {
   if (!subMenu)
