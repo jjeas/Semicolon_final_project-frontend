@@ -1,24 +1,11 @@
-const MemberComponent = ({
+const MemberEditComponent = ({
   data,
   changeHandler,
   clickHandler,
   userGender,
   userBirth,
   openAddress,
-  openPwCheck,
-  pwCheckModal,
-  PwChecker
 }) => {
-  console.log(
-    "page 에서 넘어온 data",
-    data,
-    "page 에서 넘어온 userGender",
-    userGender,
-    "page 에서 넘어온 userBirth",
-    userBirth,
-    "page 에서 넘어온 openAddress",
-    openAddress
-  );
 
   return (
     <div className="max-w-xl mx-auto p-6">
@@ -140,55 +127,6 @@ const MemberComponent = ({
               </button>
             </div>
           </li>
-
-          <li className="flex flex-col">
-            <label className="font-semibold mb-1">비밀번호</label>
-            <div className="flex gap-2">
-              <input
-                className="flex-1 border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#1f3a93] focus:border-[#1f3a93] transition"
-                type="password"
-                name="memberPassword"
-                value={data.memberPassword}
-                onChange={changeHandler}
-              />
-              <button
-                type="button"
-                onClick={openPwCheck}
-                className="bg-[#1f3a93] text-white px-4 rounded-lg font-semibold hover:bg-[#172d73] transition"
-              >
-                비밀번호 확인
-              </button>
-            </div>
-            {pwCheckModal && (
-              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
-                <div className="bg-white w-80 max-w-sm rounded-xl p-6 shadow-xl animate-fadeIn">
-                  <h2 className="font-semibold mb-3 text-center">
-                    비밀번호 확인
-                  </h2>
-                  <input
-                    className="border p-2 w-full rounded"
-                    type="password"
-                    name="memberPasswordCheck"
-                    onChange={changeHandler}
-                  />
-                  <div className="flex justify-end gap-2 mt-4">
-                    <button
-                      className="bg-blue-600 text-white px-4 py-2 rounded"
-                      onClick={PwChecker}
-                    >
-                      확인
-                    </button>
-                    <button
-                      className="bg-gray-300 px-4 py-2 rounded"
-                      onClick={openPwCheck}
-                    >
-                      취소
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
-          </li>
         </ul>
       </form>
 
@@ -202,4 +140,4 @@ const MemberComponent = ({
   );
 };
 
-export default MemberComponent;
+export default MemberEditComponent;
