@@ -11,6 +11,7 @@ const Admin = lazy(() => import("../pages/admin/AdminPage"));
 const Login = lazy(() => import("../pages/auth/LoginPage"));
 const Notice = lazy(() => import("../pages/notice/NoticeListPage"));
 const NoticeDetail = lazy(() => import("../pages/notice/NoticeReadPage"));
+const FAQ = lazy(() => import("../pages/faq/FaqListPage"));
 const Program = lazy(() => import("../pages/program/ProgramListPage"));
 const MemberMyPage = lazy(() => import("../pages/member/MemberMyPage"));
 
@@ -65,6 +66,14 @@ const root = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <NoticeDetail />
+          </Suspense>
+        ),
+      },
+       {
+        path: "faq",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <FAQ />
           </Suspense>
         ),
       },
