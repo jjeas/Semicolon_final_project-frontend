@@ -1,59 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { adminAllMenuItems } from "../../util/adminData";
 
 const AdminSidebar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
+  const [openMenu, setOpenMenu] = useState("");
 
-  // 1. 현재 URL 경로를 기반으로 '활성화된 1차 메뉴 그룹'을 찾습니다.
-  const activeGroup = adminAllMenuItems.find((menu) =>
-    currentPath.startsWith(menu.path)
-  );
-
-  // 활성화된 그룹이 없거나 세부 메뉴가 없으면 사이드바를 숨깁니다.
-  if (!activeGroup || !activeGroup.subMenus) {
-    return null;
-  }
-
-  const subMenus = activeGroup.subMenus;
+  const toggleMenu = (menuId) => {
+    setOpenMenu(openMenu === menuId ? null : menuId);
+  };
 
   return (
-    <div className="w-60 min-h-full bg-white px-4 py-6">
-      <div
-        className="
-          h-24 flex items-center justify-center text-white text-xl font-bold rounded-lg mb-4
-          bg-gradient-to-r from-teal-500 to-blue-500 shadow-md
-        "
-      >
-        {activeGroup.title}
-      </div>
-      <nav className="flex flex-col space-y-2">
-        {" "}
-        {/* space-y-2로 메뉴 간 세로 간격 추가 */}
-        {subMenus.map((item) => {
-          const isActive = currentPath === item.path;
-
-          return (
-            <Link
-              key={item.id}
-              to={item.path}
-              className={`
-                block w-full py-4 pl-4 pr-2 text-base rounded-lg border border-gray-200 bg-white
-                transition duration-150 ease-in-out text-gray-700
-                hover:bg-gray-50 hover:border-gray-300
+    <div className="w-64 min-h-screen bg-[#3A4149] text-gray-100">
+      <nav className="flex flex-col py-4">
+        {adminAllMenuItems.map((menu) => (
+          <div key={menu.id}>
+            {/* 1차 메뉴 */}
+            <button
+              onClick={() => toggleMenu(menu.id)}
+              className={`w-full flex justify-between items-center px-5 py-3 text-sm font-semibold tracking-wide
                 ${
-                  // 🟡 활성화된 항목 스타일 (굵은 글씨, 배경색/테두리 변경 없음)
-                  isActive
-                    ? "font-bold text-gray-900 border-teal-500 shadow-sm" // 활성화 시 글씨 강조 및 테두리 색상 변경
-                    : "" // 비활성 시 추가 스타일 없음
-                }
-              `}
+                  openMenu === menu.id
+                    ? "bg-[#4B525A] text-white"
+                    : "hover:bg-[#4B525A] text-gray-200"
+                } transition-all`}
             >
-              {item.title}
-            </Link>
-          );
-        })}
+              <span>{menu.title}</span>
+              <span className="text-lg">
+                {openMenu === menu.id ? "−" : "+"}
+              </span>
+            </button>
+
+            {/* 2차 메뉴 */}
+            {openMenu === menu.id && (
+              <div className="bg-[#4B525A] text-gray-200">
+                {menu.subMenus.map((sub) => {
+                  const isActive = currentPath === sub.path;
+                  return (
+                    <Link
+                      key={sub.id}
+                      to={sub.path}
+                      className={`block px-8 py-2 text-sm hover:bg-[#5B636C] transition
+                        ${
+                          isActive
+                            ? "bg-[#5B636C] font-semibold text-white"
+                            : "text-gray-300"
+                        }`}
+                    >
+                      {sub.title}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        ))}
       </nav>
     </div>
   );

@@ -46,7 +46,7 @@ const root = createBrowserRouter([
         ),
       },
       {
-        path: "/community/notice",
+        path: "community/notice",
         element: (
           <Suspense fallback={<Loading />}>
             <Notice />
@@ -54,7 +54,7 @@ const root = createBrowserRouter([
         ),
       },
       {
-        path: "/community/notice/:id",
+        path: "community/notice/:id",
         element: (
           <Suspense fallback={<Loading />}>
             <NoticeDetail />
