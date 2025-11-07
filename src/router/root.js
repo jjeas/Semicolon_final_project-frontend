@@ -70,6 +70,14 @@ const root = createBrowserRouter([
         ),
       },
       {
+        path: "/community/faq",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <FAQ />
+          </Suspense>
+        ),
+      },
+      {
         path: "member",
         children: [
           {

@@ -1,6 +1,14 @@
 import React from "react";
 
-const PartnerRequestComponent = ({ clickHandler }) => {
+const PartnerRequestComponent = ({
+  checkClassHandler,
+  checkAgreeHandler,
+  cancelHandler,
+  requestHandler,
+  resumeRef,
+  certRef,
+  bankRef,
+}) => {
   return (
     <div className="max-w-3xl mx-auto p-10">
       <div className="mb-10">
@@ -21,7 +29,7 @@ const PartnerRequestComponent = ({ clickHandler }) => {
               <input
                 type="checkbox"
                 name={"수영"}
-                onClick={clickHandler}
+                onChange={checkClassHandler}
                 className="w-5 h-5 accent-blue-600"
               />
               수영
@@ -30,7 +38,7 @@ const PartnerRequestComponent = ({ clickHandler }) => {
               <input
                 type="checkbox"
                 name={"헬스"}
-                onClick={clickHandler}
+                onChange={checkClassHandler}
                 className="w-5 h-5 accent-blue-600"
               />
               헬스
@@ -39,7 +47,7 @@ const PartnerRequestComponent = ({ clickHandler }) => {
               <input
                 type="checkbox"
                 name={"골프"}
-                onClick={clickHandler}
+                onChange={checkClassHandler}
                 className="w-5 h-5 accent-blue-600"
               />
               골프
@@ -48,7 +56,7 @@ const PartnerRequestComponent = ({ clickHandler }) => {
               <input
                 type="checkbox"
                 name={"무용"}
-                onClick={clickHandler}
+                onChange={checkClassHandler}
                 className="w-5 h-5 accent-blue-600"
               />
               무용
@@ -57,7 +65,7 @@ const PartnerRequestComponent = ({ clickHandler }) => {
               <input
                 type="checkbox"
                 name={"풋살"}
-                onClick={clickHandler}
+                onChange={checkClassHandler}
                 className="w-5 h-5 accent-blue-600"
               />
               풋살
@@ -75,6 +83,8 @@ const PartnerRequestComponent = ({ clickHandler }) => {
               <span className="font-medium text-gray-800">이력서</span>
               <input
                 type="file"
+                ref={resumeRef}
+                multiple
                 accept=".pdf, .doc, .docx"
                 className="mt-2 block w-full border border-gray-300 rounded-lg p-3 text-sm bg-gray-50 hover:bg-gray-100 transition cursor-pointer"
               />
@@ -87,6 +97,8 @@ const PartnerRequestComponent = ({ clickHandler }) => {
               <span className="font-medium text-gray-800">자격증</span>
               <input
                 type="file"
+                ref={certRef}
+                multiple
                 accept=".jpg, .jpeg, .png"
                 className="mt-2 block w-full border border-gray-300 rounded-lg p-3 text-sm bg-gray-50 hover:bg-gray-100 transition cursor-pointer"
               />
@@ -99,6 +111,8 @@ const PartnerRequestComponent = ({ clickHandler }) => {
               <span className="font-medium text-gray-800">계좌 사본</span>
               <input
                 type="file"
+                ref={bankRef}
+                multiple
                 accept=".jpg, .jpeg, .png"
                 className="mt-2 block w-full border border-gray-300 rounded-lg p-3 text-sm bg-gray-50 hover:bg-gray-100 transition cursor-pointer"
               />
@@ -111,28 +125,104 @@ const PartnerRequestComponent = ({ clickHandler }) => {
 
         <section>
           <h3 className="font-semibold text-lg text-gray-900 border-b pb-2">
-            동의 사항
+            동의 사항 (필수)
           </h3>
 
           <div className="space-y-3 mt-4">
             <label className="flex items-center gap-3 cursor-pointer text-gray-700 text-sm">
-              <input type="checkbox" className="w-5 h-5 accent-blue-600" />
-              보험 가입 여부
+              <input
+                type="checkbox"
+                name="privacyAgreement"
+                onChange={checkAgreeHandler}
+                className="w-5 h-5 accent-blue-600"
+              />
+              개인정보 수집 및 이용 동의
+              <p className="text-xs text-gray-500 mt-1">
+                회원 정보, 사업자 정보, 결제 정보 등 수집 목적·보유 기간 명시
+                「개인정보 보호법」 관련 필수 항목 <br />
+              </p>
             </label>
 
             <label className="flex items-center gap-3 cursor-pointer text-gray-700 text-sm">
-              <input type="checkbox" className="w-5 h-5 accent-blue-600" />
-              사고 책임 동의
+              <input
+                type="checkbox"
+                name="thirdAgreement"
+                onChange={checkAgreeHandler}
+                className="w-5 h-5 accent-blue-600"
+              />
+              제3자 정보 제공 동의
+              <p className="text-xs text-gray-500 mt-1">
+                플랫폼 운영사(예: 본사)나 보험사, 정산 대행사 등에게 정보 제공
+                동의 <br />
+              </p>
+            </label>
+
+            <label className="flex items-center gap-3 cursor-pointer text-gray-700 text-sm">
+              <input
+                type="checkbox"
+                name="serviceAgreement"
+                onChange={checkAgreeHandler}
+                className="w-5 h-5 accent-blue-600"
+              />
+              서비스 이용 약관 동의
+              <p className="text-xs text-gray-500 mt-1">
+                파트너 회원의 권리·의무, 이용 제한, 탈퇴 절차 등 <br />
+              </p>
+            </label>
+
+            <label className="flex items-center gap-3 cursor-pointer text-gray-700 text-sm">
+              <input
+                type="checkbox"
+                name="partnerAgreement"
+                onChange={checkAgreeHandler}
+                className="w-5 h-5 accent-blue-600"
+              />
+              파트너 활동 규정 및 계약 조건 동의
+              <p className="text-xs text-gray-500 mt-1">
+                서비스 품질 유지 의무, 계약 해지 사유, 고객 응대 기준 등 <br />
+              </p>
+            </label>
+
+            <label className="flex items-center gap-3 cursor-pointer text-gray-700 text-sm">
+              <input
+                type="checkbox"
+                name="taxAgreement"
+                onChange={checkAgreeHandler}
+                className="w-5 h-5 accent-blue-600"
+              />
+              세금 및 정산 관련 동의
+              <p className="text-xs text-gray-500 mt-1">
+                소득 신고, 수수료 공제, 전자세금계산서 발행 관련 내용 <br />
+              </p>
+            </label>
+
+            <label className="flex items-center gap-3 cursor-pointer text-gray-700 text-sm">
+              <input
+                type="checkbox"
+                name="insuranceAgreement"
+                onChange={checkAgreeHandler}
+                className="w-5 h-5 accent-blue-600"
+              />
+              보험 가입 및 사고 책임 동의
+              <p className="text-xs text-gray-500 mt-1">
+                소득 신고, 수수료 공제, 전자세금계산서 발행 관련 내용 <br />
+              </p>
             </label>
           </div>
         </section>
       </div>
 
       <div className="flex justify-end gap-4 mt-10">
-        <button className="px-8 py-3 rounded-xl font-semibold border border-gray-300 hover:bg-gray-200 text-gray-800 transition">
+        <button
+          onClick={cancelHandler}
+          className="px-8 py-3 rounded-xl font-semibold border border-gray-300 hover:bg-gray-200 text-gray-800 transition"
+        >
           취소
         </button>
-        <button className="px-8 py-3 rounded-xl font-semibold bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:opacity-90 shadow-md transition">
+        <button
+          onClick={requestHandler}
+          className="px-8 py-3 rounded-xl font-semibold bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:opacity-90 shadow-md transition"
+        >
           신청하기
         </button>
       </div>
