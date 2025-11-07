@@ -4,33 +4,12 @@ import AdminHeader from "./AdminHeader";
 import AdminSidebar from "./AdminSidebar";
 
 const AdminLayout = () => {
-  const location = useLocation();
-
-  const isMainPage = location.pathname === "/";
-  const shouldShowSidebar = !isMainPage;
-
-  // 서브 페이지일 때만 flex 클래스를 부모 컨테이너에 적용
-  const contentWrapperClasses = `flex-1 w-full max-w-screen-2xl mx-auto ${
-    shouldShowSidebar ? "flex" : ""
-  }`;
-  if (isMainPage) {
-    return (
-      <div className="flex flex-col min-h-screen">
-        <AdminHeader />
-        <main className="flex-1 bg-gray-100">
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#2e3441] text-gray-100">
       <AdminHeader />
-      <div className={contentWrapperClasses}>
+      <div className={`flex flex-1 flex-col"}`}>
         <AdminSidebar />
-        <main className={`flex-1 bg-white p-6 lg:pl-8`}>
+        <main className="flex-1 bg-white text-gray-800 p-6">
           <Outlet />
         </main>
       </div>

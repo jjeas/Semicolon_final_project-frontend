@@ -97,7 +97,7 @@ export const allMenuItems = [
       {
         id: "notice",
         title: "공지사항",
-        path: "/notice",
+        path: "/community/notice",
       },
       {
         id: "",
@@ -107,7 +107,7 @@ export const allMenuItems = [
       {
         id: "faq",
         title: "자주묻는질문",
-        path: "/faq",
+        path: "/community/faq",
       },
       {
         id: "",

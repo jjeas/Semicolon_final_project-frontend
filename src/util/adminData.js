@@ -1,7 +1,40 @@
 export const adminAllMenuItems = [
   {
+    id: "memberInfo",
+    title: "회원정보",
+    path: "/admin/memberInfo", // 1차 메뉴의 기본 경로
+    subMenus: [
+      // 2차 메뉴 (사이드바 내용)
+      {
+        id: "",
+        title: "운영시간", //운영시간수정
+        path: "",
+      },
+      {
+        id: "",
+        title: "상품대여",
+        path: "",
+      },
+      {
+        id: "",
+        title: "차량등록",
+        path: "",
+      },
+      {
+        id: "",
+        title: "요금안내",
+        path: "",
+      },
+      {
+        id: "",
+        title: "할인/환불/연기",
+        path: "",
+      },
+    ],
+  },
+  {
     id: "guide",
-    title: "추가예정",
+    title: "이용안내",
     path: "/guide", // 1차 메뉴의 기본 경로
     subMenus: [
       // 2차 메뉴 (사이드바 내용)
@@ -56,12 +89,12 @@ export const adminAllMenuItems = [
       {
         id: "dance",
         title: "무용",
-        path: "/program/4",
+        path: "/admin/program/4",
       },
       {
         id: "futsal",
         title: "풋살",
-        path: "/program/5",
+        path: "/admin/program/5",
       },
     ],
   },
@@ -91,13 +124,13 @@ export const adminAllMenuItems = [
   {
     id: "community",
     title: "커뮤니티",
-    path: "/community", // 1차 메뉴의 기본 경로
+    path: "/admin/community", // 1차 메뉴의 기본 경로
     subMenus: [
       // 2차 메뉴 (사이드바 내용)
       {
         id: "notice",
         title: "공지사항",
-        path: "/notice",
+        path: "/admin/notice",
       },
       {
         id: "",
@@ -105,9 +138,9 @@ export const adminAllMenuItems = [
         path: "",
       },
       {
-        id: "",
+        id: "faq",
         title: "자주묻는질문",
-        path: "",
+        path: "/admin/faq",
       },
       {
         id: "",
