@@ -169,10 +169,10 @@ const NoticeListPageComponent = () => {
         <div className="flex justify-end mr-4">
           <Link
             type="button"
-            className="bg-gray-700 text-white font-bold rounded px-4 py-2 hover:bg-gray-800 "
+            className="bg-gray-700 text-white font-bold rounded px-4 py-2 mt-4 hover:bg-gray-800 "
             to={`add`}
           >
-            추가
+            공지사항 추가
           </Link>
         </div>
       ) : (
