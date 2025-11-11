@@ -6,6 +6,7 @@ import NoticeListPage from "../pages/notice/NoticeListPage";
 import NoticeEditPage from "../pages/admin/community/notice/NoticeEditPage";
 import NoticeAddPage from "../pages/admin/community/notice/NoticeAddPage";
 import NoticeReadPage from "../pages/notice/NoticeReadPage";
+import FaqListPage from "../pages/faq/FaqListPage";
 
 const Loading = () => <div>Loading...</div>;
 const adminRouter = () => {
@@ -63,6 +64,14 @@ const adminRouter = () => {
       element: (
         <Suspense fallback={<Loading />}>
           <NoticeEditPage />
+        </Suspense>
+      ),
+    },
+    {
+      path: "faq",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <FaqListPage />
         </Suspense>
       ),
     },
