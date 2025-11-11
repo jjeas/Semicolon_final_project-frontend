@@ -1,73 +1,93 @@
-import React, { useEffect, useState } from 'react'
-import { formatter, getNoticeList, increaseViewCount, } from '../../api/noticeApi'
+import React, { useEffect, useState } from "react";
+import {
+  formatter,
+  getNoticeList,
+  increaseViewCount,
+} from "../../api/noticeApi";
 
-import {  useSearchParams } from 'react-router-dom'
-import useCustomMove from '../../hooks/useCustomMove'
+import { Link, useLocation, useSearchParams } from "react-router-dom";
+import useCustomMove from "../../hooks/useCustomMove";
 
 const NoticeListPageComponent = () => {
-  const [notices, setNotices] = useState([])
+  const [notices, setNotices] = useState([]);
   const [searchParam, setSearchParam] = useSearchParams();
-  const [searchingTitle, setSearchingTitle] = useState(() => searchParam.get('query') || '')
-  const [submitSearchingTitle, setSubmitSearchingTitle] = useState(() => searchParam.get('query') || '')
-  const [category, setCategory] = useState(() => searchParam.get('category') || 1)
-  const {moveToNoticeDetail}=useCustomMove()
+  const [searchingTitle, setSearchingTitle] = useState(
+    () => searchParam.get("query") || ""
+  );
+  const [submitSearchingTitle, setSubmitSearchingTitle] = useState(
+    () => searchParam.get("query") || ""
+  );
+  const [category, setCategory] = useState(
+    () => searchParam.get("category") || 1
+  );
+  const { moveToNoticeDetail, moveToAdminNoticeDetail } = useCustomMove();
+
+  const location = useLocation();
+  const adminPage = location.pathname.startsWith("/admin");
+
   useEffect(() => {
     const getData = async () => {
       try {
         const data = await getNoticeList();
-        setNotices(data)
+        setNotices(data);
       } catch (error) {
-        console.log("공지사항을 불러올 수 없습니다. 에러내용:", error)
+        console.log("공지사항을 불러올 수 없습니다. 에러내용:", error);
       }
-    }; getData()
-  }, [])
+    };
+    getData();
+  }, []);
 
   const addViewCount = async (id) => {
-    console.log('클릭되었습니다')
+    console.log("클릭되었습니다");
     setNotices((prev) =>
-      prev.map(notice => notice.noticeId === id ? { ...notice, viewCount: notice.viewCount + 1 } : notice
+      prev.map((notice) =>
+        notice.noticeId === id
+          ? { ...notice, viewCount: notice.viewCount + 1 }
+          : notice
       )
-    )
+    );
     try {
       await increaseViewCount(id);
-      moveToNoticeDetail(id)
+      if (adminPage) moveToAdminNoticeDetail(id);
+      else moveToNoticeDetail(id);
     } catch (error) {
-      console.error("조회수 증가 에러 발생 에러= ", error)
+      console.error("조회수 증가 에러 발생 에러= ", error);
     }
-  }
+  };
 
   const handleSearchChange = (e) => {
-    console.log('필터변경중', e.target.value)
-    setSearchingTitle(e.target.value)
-  }
+    console.log("필터변경중", e.target.value);
+    setSearchingTitle(e.target.value);
+  };
 
   const handleSearchSubmit = (e) => {
-    e.preventDefault()
-    console.log('버튼눌림 검색어', searchingTitle)
-    setSubmitSearchingTitle(searchingTitle)
-    setSearchParam({query:searchingTitle, category:category})
-    console.log(filteredNotice)
-  }
+    e.preventDefault();
+    console.log("버튼눌림 검색어", searchingTitle);
+    setSubmitSearchingTitle(searchingTitle);
+    setSearchParam({ query: searchingTitle, category: category });
+    console.log(filteredNotice);
+  };
 
-  const filteredNotice = notices.filter(i =>{
-    const data=submitSearchingTitle.toLowerCase();
-    if(!data) return true
-    if(category==1) return i.title.toLowerCase().includes(data)
-    if(category==2) return i.content.toLowerCase().includes(data)
-    if(category==3) return i.title.toLowerCase().includes(data) || i.content.toLowerCase().includes(data)
-    return false
-  }
-
-  )
+  const filteredNotice = notices.filter((i) => {
+    const data = submitSearchingTitle.toLowerCase();
+    if (!data) return true;
+    if (category == 1) return i.title.toLowerCase().includes(data);
+    if (category == 2) return i.content.toLowerCase().includes(data);
+    if (category == 3)
+      return (
+        i.title.toLowerCase().includes(data) ||
+        i.content.toLowerCase().includes(data)
+      );
+    return false;
+  });
 
   const handleCategory = (e) => {
-    setCategory(e.target.value)
-  }
+    setCategory(e.target.value);
+  };
 
   // --- 🎨 여기부터 디자인 적용된 JSX ---
   return (
     <div className="container mx-auto max-w-5xl p-4 md:p-8">
-
       {/* 1. 페이지 제목 */}
       <h1 className="text-3xl font-bold mb-6 pb-4 border-b-2 border-gray-800">
         공지사항
@@ -83,22 +103,22 @@ const NoticeListPageComponent = () => {
           onChange={handleCategory}
           className="border border-gray-300 rounded px-3 py-2"
         >
-          <option value='1'>제목</option>
-          <option value='2'>내용</option>
-          <option value='3'>제목+내용</option>
+          <option value="1">제목</option>
+          <option value="2">내용</option>
+          <option value="3">제목+내용</option>
         </select>
 
         <input
-          type='text'
-          name='searchingTitle'
+          type="text"
+          name="searchingTitle"
           value={searchingTitle}
-          placeholder='검색어 키워드를 입력하세요'
+          placeholder="검색어 키워드를 입력하세요"
           onChange={(e) => handleSearchChange(e)}
           className="border border-gray-300 rounded px-3 py-2 flex-grow max-w-xs"
         />
 
         <button
-          type='submit'
+          type="submit"
           className="bg-gray-700 text-white font-bold rounded px-4 py-2 hover:bg-gray-800"
         >
           검색
@@ -106,9 +126,7 @@ const NoticeListPageComponent = () => {
       </form>
 
       {/* 3. 총 게시물 수 */}
-      <div className="text-sm mb-2">
-        총 {filteredNotice.length}건
-      </div>
+      <div className="text-sm mb-2">총 {filteredNotice.length}건</div>
 
       {/* 4. 공지사항 테이블 */}
       <table className="w-full text-center border-t-2 border-gray-700">
@@ -129,7 +147,7 @@ const NoticeListPageComponent = () => {
               </td>
             </tr>
           ) : (
-            filteredNotice.unshift().map(i => (
+            filteredNotice.map((i) => (
               <tr
                 key={i.noticeId} // key는 map의 최상위 요소에
                 onClick={() => addViewCount(i.noticeId)}
@@ -147,8 +165,21 @@ const NoticeListPageComponent = () => {
           )}
         </tbody>
       </table>
+      {adminPage ? (
+        <div className="flex justify-end mr-4">
+          <Link
+            type="button"
+            className="bg-gray-700 text-white font-bold rounded px-4 py-2 mt-4 hover:bg-gray-800 "
+            to={`add`}
+          >
+            공지사항 추가
+          </Link>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default NoticeListPageComponent
+export default NoticeListPageComponent;

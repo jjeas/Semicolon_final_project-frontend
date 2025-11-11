@@ -36,7 +36,7 @@ const AdminPage = () => {
               onSelectSub={setSelectedSubMenu}
               moveUrl={setMoveUrl}
             />
-            <AdminEditArea subMenu={selectedSubMenu} moveUrl={moveUrl} />
+            {/* <AdminEditArea subMenu={selectedSubMenu} moveUrl={moveUrl} /> */}
           </div>
         </div>
       </div>
