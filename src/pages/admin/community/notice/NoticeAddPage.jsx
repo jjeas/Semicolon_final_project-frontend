@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { registerNotice } from "../../../../api/adminApi";
 
@@ -8,6 +8,7 @@ const initstate = {
 };
 const NoticeAddPage = () => {
   const navigate = useNavigate();
+  const noticeFileRef = useRef();
   const [noticeData, setNoticeData] = useState(initstate);
 
   const changeHandler = (e) => {
@@ -19,7 +20,15 @@ const NoticeAddPage = () => {
     e.preventDefault();
     const f = async () => {
       try {
-        const res = await registerNotice(noticeData);
+        const files = noticeFileRef.current.files;
+        const formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+          formData.append("files", files[i]);
+        }
+        formData.append("title", noticeData.title);
+        formData.append("content", noticeData.content);
+
+        const res = await registerNotice(formData);
         console.log("backend에 전달", res);
         alert("공지 등록 완료");
         navigate(-1);
@@ -66,6 +75,7 @@ const NoticeAddPage = () => {
 
       {/* 첨부파일 영역 (임시로 비워둠) */}
       <div className="border-t border-gray-300 pt-4 mt-6">
+        <input type="file" multiple ref={noticeFileRef} />
         {/* 첨부파일 정보가 있다면 여기에 렌더링 */}
         {/* <div className="text-sm text-gray-600 mb-2">
           📎 11월 임대 사물함001.png [ Size : 105.19KB, Down : 83 ]
@@ -75,6 +85,7 @@ const NoticeAddPage = () => {
       </div>
       <div className="flex justify-end mt-8 gap-x-4">
         <button
+          type="submit"
           onClick={submitHandler}
           className="bg-gray-700 text-white font-bold py-2 px-6 rounded hover:bg-gray-800 transition-colors"
         >
