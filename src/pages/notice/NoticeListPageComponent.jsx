@@ -5,39 +5,17 @@ import {
   increaseViewCount,
 } from "../../api/noticeApi";
 
-<<<<<<< Updated upstream
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import useCustomMove from "../../hooks/useCustomMove";
-=======
-import { useSearchParams } from 'react-router-dom'
-import useCustomMove from '../../hooks/useCustomMove'
->>>>>>> Stashed changes
 
 const NoticeListPageComponent = () => {
   const [notices, setNotices] = useState([]);
   const [searchParam, setSearchParam] = useSearchParams();
-<<<<<<< Updated upstream
-  const [searchingTitle, setSearchingTitle] = useState(
-    () => searchParam.get("query") || ""
-  );
-  const [submitSearchingTitle, setSubmitSearchingTitle] = useState(
-    () => searchParam.get("query") || ""
-  );
-  const [category, setCategory] = useState(
-    () => searchParam.get("category") || 1
-  );
-  const { moveToNoticeDetail, moveToAdminNoticeDetail } = useCustomMove();
-
-  const location = useLocation();
-  const adminPage = location.pathname.startsWith("/admin");
-
-=======
   const [searchingTitle, setSearchingTitle] = useState(() => searchParam.get('query') || '')
   const [submitSearchingTitle, setSubmitSearchingTitle] = useState(() => searchParam.get('query') || '')
   const [category, setCategory] = useState(() => searchParam.get('category') || 1)
   const [submitCategory, setSubmitCategory] = useState(() => searchParam.get('category') || 1)
-  const {moveToNoticeDetail}=useCustomMove()
->>>>>>> Stashed changes
+  const { moveToNoticeDetail,moveToAdminNoticeDetail } = useCustomMove()
   useEffect(() => {
     const getData = async () => {
       try {
@@ -49,7 +27,8 @@ const NoticeListPageComponent = () => {
     };
     getData();
   }, []);
-
+  const location = useLocation();
+  const adminPage = location.pathname.startsWith("/admin");
   const addViewCount = async (id) => {
     console.log("클릭되었습니다");
     setNotices((prev) =>
@@ -74,44 +53,22 @@ const NoticeListPageComponent = () => {
   };
 
   const handleSearchSubmit = (e) => {
-<<<<<<< Updated upstream
-    e.preventDefault();
-    console.log("버튼눌림 검색어", searchingTitle);
-    setSubmitSearchingTitle(searchingTitle);
-    setSearchParam({ query: searchingTitle, category: category });
-    console.log(filteredNotice);
-  };
-
-  const filteredNotice = notices.filter((i) => {
-    const data = submitSearchingTitle.toLowerCase();
-    if (!data) return true;
-    if (category == 1) return i.title.toLowerCase().includes(data);
-    if (category == 2) return i.content.toLowerCase().includes(data);
-    if (category == 3)
-      return (
-        i.title.toLowerCase().includes(data) ||
-        i.content.toLowerCase().includes(data)
-      );
-    return false;
-  });
-=======
     e.preventDefault()
     console.log('버튼눌림 검색어', searchingTitle)
     setSubmitSearchingTitle(searchingTitle)
     setSubmitCategory(category)
-    setSearchParam({query:searchingTitle, category:category})
+    setSearchParam({ query: searchingTitle, category: category })
     console.log(filteredNotice)
   }
 
-  const filteredNotice = notices.filter(i =>{
-    const data=submitSearchingTitle.toLowerCase();
-    if(!data) return true
-    if(submitCategory==1) return i.title.toLowerCase().includes(data)
-    if(submitCategory==2) return i.content.toLowerCase().includes(data)
-    if(submitCategory==3) return i.title.toLowerCase().includes(data) || i.content.toLowerCase().includes(data)
+  const filteredNotice = notices.filter(i => {
+    const data = submitSearchingTitle.toLowerCase();
+    if (!data) return true
+    if (submitCategory == 1) return i.title.toLowerCase().includes(data)
+    if (submitCategory == 2) return i.content.toLowerCase().includes(data)
+    if (submitCategory == 3) return i.title.toLowerCase().includes(data) || i.content.toLowerCase().includes(data)
     return false
   }).reverse()
->>>>>>> Stashed changes
 
   const handleCategory = (e) => {
     setCategory(e.target.value);
@@ -179,7 +136,7 @@ const NoticeListPageComponent = () => {
               </td>
             </tr>
           ) : (
-            filteredNotice.reverse().map(i => (
+            filteredNotice.map(i => (
               <tr
                 key={i.noticeId} // key는 map의 최상위 요소에
                 onClick={() => addViewCount(i.noticeId)}
