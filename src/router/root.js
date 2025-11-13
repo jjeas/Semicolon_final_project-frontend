@@ -17,6 +17,7 @@ const Program = lazy(() => import("../pages/program/ProgramListPage"));
 const MemberMyPage = lazy(() => import("../pages/member/MemberMyPage"));
 const Gallery = lazy(() => import("../pages/gallery/GalleryListPage"));
 const GalleryDetail = lazy(() => import("../pages/gallery/GalleryReadPage"));
+const Schedule = lazy(() => import("../pages/schedule/ScheldulePage"));
 
 const root = createBrowserRouter([
   {
@@ -88,7 +89,15 @@ const root = createBrowserRouter([
         ),
       },
       {
-        path: "member",
+        path: "/community/schedule",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Schedule />
+          </Suspense>
+        ),
+      },
+      {
+        path: "member/:id",
         children: [
           {
             index: true,
