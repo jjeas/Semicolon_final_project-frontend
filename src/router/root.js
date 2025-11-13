@@ -15,6 +15,8 @@ const NoticeDetail = lazy(() => import("../pages/notice/NoticeReadPage"));
 const FAQ = lazy(() => import("../pages/faq/FaqListPage"));
 const Program = lazy(() => import("../pages/program/ProgramListPage"));
 const MemberMyPage = lazy(() => import("../pages/member/MemberMyPage"));
+const Gallery = lazy(() => import("../pages/gallery/GalleryListPage"));
+const GalleryDetail = lazy(() => import("../pages/gallery/GalleryReadPage"));
 
 const root = createBrowserRouter([
   {
@@ -62,10 +64,18 @@ const root = createBrowserRouter([
         ),
       },
       {
-        path: "faq",
+        path: "/community/gallery",
         element: (
           <Suspense fallback={<Loading />}>
-            <FAQ />
+            <Gallery />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/community/gallery/:id",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <GalleryDetail />
           </Suspense>
         ),
       },
@@ -89,25 +99,6 @@ const root = createBrowserRouter([
             ),
           },
           ...memberMyPageRouter(),
-        ],
-      },
-    ],
-  },
-  {
-    path: "admin",
-    element: <AdminLayout />,
-    children: [
-      {
-        children: [
-          {
-            index: true,
-            element: (
-              <Suspense>
-                <Admin />
-              </Suspense>
-            ),
-          },
-          ...adminRouter(),
         ],
       },
     ],
