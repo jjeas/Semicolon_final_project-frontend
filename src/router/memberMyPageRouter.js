@@ -41,7 +41,7 @@ const memberMyPageRouter = () => {
         )
     },
     {
-        path: "partnerRequest", 
+        path: "partnerRequest",
         element: (
             <Suspense fallback= {<Loading/>}>
                 <PartnerRequest/>
