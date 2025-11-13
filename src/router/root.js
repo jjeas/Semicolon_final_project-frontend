@@ -88,7 +88,7 @@ const root = createBrowserRouter([
         ),
       },
       {
-        path: "member",
+        path: "member/:id",
         children: [
           {
             index: true,
