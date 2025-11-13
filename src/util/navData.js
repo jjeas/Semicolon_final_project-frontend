@@ -82,9 +82,9 @@ export const allMenuItems = [
         path: "",
       },
       {
-        id: "",
+        id: "dailyUse",
         title: "일일이용예약",
-        path: "",
+        path: "/reservation/dailyUse",
       },
     ],
   },
@@ -112,7 +112,7 @@ export const allMenuItems = [
       {
         id: "",
         title: "갤러리",
-        path: "",
+        path: "/community/gallery",
       },
     ],
   },
