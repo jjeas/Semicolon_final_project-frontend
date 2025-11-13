@@ -14,7 +14,7 @@ const Notice = lazy(() => import("../pages/notice/NoticeListPage"));
 const NoticeDetail = lazy(() => import("../pages/notice/NoticeReadPage"));
 const FAQ = lazy(() => import("../pages/faq/FaqListPage"));
 const Program = lazy(() => import("../pages/program/ProgramListPage"));
-const MemberMyPage = lazy(() => import("../pages/member/MemberMyPage"));
+const MemberMyPage = lazy(() => import("../pages/member/mypage/MemberMyPage"));
 const Gallery = lazy(() => import("../pages/gallery/GalleryListPage"));
 const GalleryDetail = lazy(() => import("../pages/gallery/GalleryReadPage"));
 const DailyUse = lazy(() => import("../pages/dailyUse/DailyUsePage"));
