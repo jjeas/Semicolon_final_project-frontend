@@ -64,11 +64,7 @@ const root = createBrowserRouter([
         ),
       },
       {
-<<<<<<< Updated upstream
-        path: "faq",
-=======
         path: "/community/gallery",
->>>>>>> Stashed changes
         element: (
           <Suspense fallback={<Loading />}>
             <Gallery />
@@ -76,8 +72,6 @@ const root = createBrowserRouter([
         ),
       },
       {
-<<<<<<< Updated upstream
-=======
         path: "/community/gallery/:id",
         element: (
           <Suspense fallback={<Loading />}>
@@ -86,11 +80,10 @@ const root = createBrowserRouter([
         ),
       },
       {
->>>>>>> Stashed changes
         path: "/community/faq",
         element: (
           <Suspense fallback={<Loading />}>
-            <DailyUse />
+            <FAQ />
           </Suspense>
         ),
       },
