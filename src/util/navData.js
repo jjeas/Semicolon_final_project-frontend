@@ -112,7 +112,7 @@ export const allMenuItems = [
       {
         id: "",
         title: "갤러리",
-        path: "",
+        path: "/community/gallery",
       },
     ],
   },

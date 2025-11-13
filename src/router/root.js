@@ -15,7 +15,8 @@ const NoticeDetail = lazy(() => import("../pages/notice/NoticeReadPage"));
 const FAQ = lazy(() => import("../pages/faq/FaqListPage"));
 const Program = lazy(() => import("../pages/program/ProgramListPage"));
 const MemberMyPage = lazy(() => import("../pages/member/MemberMyPage"));
-const DailyUse = lazy(() => import("../pages/dailyUse/DailyUsePage"));
+const Gallery = lazy(() => import("../pages/gallery/GalleryListPage"));
+const GalleryDetail = lazy(() => import("../pages/gallery/GalleryReadPage"));
 
 const root = createBrowserRouter([
   {
@@ -63,15 +64,30 @@ const root = createBrowserRouter([
         ),
       },
       {
-        path: "community/faq",
+<<<<<<< Updated upstream
+        path: "faq",
+=======
+        path: "/community/gallery",
+>>>>>>> Stashed changes
         element: (
           <Suspense fallback={<Loading />}>
-            <FAQ />
+            <Gallery />
           </Suspense>
         ),
       },
       {
-        path: "reservation/dailyUse",
+<<<<<<< Updated upstream
+=======
+        path: "/community/gallery/:id",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <GalleryDetail />
+          </Suspense>
+        ),
+      },
+      {
+>>>>>>> Stashed changes
+        path: "/community/faq",
         element: (
           <Suspense fallback={<Loading />}>
             <DailyUse />
