@@ -1,16 +1,23 @@
 import { lazy, Suspense } from "react";
 import Layout from "../components/layouts/Layout";
 import adminRouter from "./adminRouter";
+import memberMyPageRouter from "./memberMyPageRouter";
+import AdminLayout from "../components/layouts/AdminLayout";
 
 const { createBrowserRouter } = require("react-router-dom");
 
 const Loading = () => <div>Loading...</div>;
 const Main = lazy(() => import("../pages/public/Mainpage"));
-const Admin = lazy(() => import("../pages/admin/AdminPage"));
+const Admin = lazy(() => import("../pages/admin/main/AdminPage"));
 const Login = lazy(() => import("../pages/auth/LoginPage"));
 const Notice = lazy(() => import("../pages/notice/NoticeListPage"));
 const NoticeDetail = lazy(() => import("../pages/notice/NoticeReadPage"));
 const FAQ = lazy(() => import("../pages/faq/FaqListPage"));
+<<<<<<< HEAD
+=======
+const Program = lazy(() => import("../pages/program/ProgramListPage"));
+const MemberMyPage = lazy(() => import("../pages/member/MemberMyPage"));
+>>>>>>> main
 
 const root = createBrowserRouter([
   {
@@ -26,13 +33,12 @@ const root = createBrowserRouter([
         ),
       },
       {
-        path: "admin",
+        path: `program/:programId`,
         element: (
           <Suspense fallback={<Loading />}>
-            <Admin />
+            <Program />
           </Suspense>
         ),
-        children: adminRouter(),
       },
       {
         path: "login",
@@ -43,7 +49,7 @@ const root = createBrowserRouter([
         ),
       },
       {
-        path: "notice",
+        path: "community/notice",
         element: (
           <Suspense fallback={<Loading />}>
             <Notice />
@@ -51,14 +57,18 @@ const root = createBrowserRouter([
         ),
       },
       {
-        path: "notice/:id",
+        path: "community/notice/:id",
         element: (
           <Suspense fallback={<Loading />}>
             <NoticeDetail />
           </Suspense>
         ),
       },
+<<<<<<< HEAD
        {
+=======
+      {
+>>>>>>> main
         path: "faq",
         element: (
           <Suspense fallback={<Loading />}>
@@ -66,6 +76,50 @@ const root = createBrowserRouter([
           </Suspense>
         ),
       },
+<<<<<<< HEAD
+=======
+      {
+        path: "/community/faq",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <FAQ />
+          </Suspense>
+        ),
+      },
+      {
+        path: "member",
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <MemberMyPage />
+              </Suspense>
+            ),
+          },
+          ...memberMyPageRouter(),
+        ],
+      },
+    ],
+  },
+  {
+    path: "admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense>
+                <Admin />
+              </Suspense>
+            ),
+          },
+          ...adminRouter(),
+        ],
+      },
+>>>>>>> main
     ],
   },
 ]);
