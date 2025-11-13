@@ -17,6 +17,7 @@ const Program = lazy(() => import("../pages/program/ProgramListPage"));
 const MemberMyPage = lazy(() => import("../pages/member/mypage/MemberMyPage"));
 const Gallery = lazy(() => import("../pages/gallery/GalleryListPage"));
 const GalleryDetail = lazy(() => import("../pages/gallery/GalleryReadPage"));
+const DailyUse = lazy(() => import("../pages/dailyUse/DailyUsePage"));
 
 const root = createBrowserRouter([
   {
@@ -84,6 +85,14 @@ const root = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <FAQ />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/reservation/dailyUse",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <DailyUse />
           </Suspense>
         ),
       },
