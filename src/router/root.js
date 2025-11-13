@@ -13,11 +13,8 @@ const Login = lazy(() => import("../pages/auth/LoginPage"));
 const Notice = lazy(() => import("../pages/notice/NoticeListPage"));
 const NoticeDetail = lazy(() => import("../pages/notice/NoticeReadPage"));
 const FAQ = lazy(() => import("../pages/faq/FaqListPage"));
-<<<<<<< HEAD
-=======
 const Program = lazy(() => import("../pages/program/ProgramListPage"));
 const MemberMyPage = lazy(() => import("../pages/member/MemberMyPage"));
->>>>>>> main
 
 const root = createBrowserRouter([
   {
@@ -64,62 +61,14 @@ const root = createBrowserRouter([
           </Suspense>
         ),
       },
-<<<<<<< HEAD
        {
-=======
-      {
->>>>>>> main
-        path: "faq",
+        path: "community/faq",
         element: (
           <Suspense fallback={<Loading />}>
             <FAQ />
           </Suspense>
         ),
       },
-<<<<<<< HEAD
-=======
-      {
-        path: "/community/faq",
-        element: (
-          <Suspense fallback={<Loading />}>
-            <FAQ />
-          </Suspense>
-        ),
-      },
-      {
-        path: "member",
-        children: [
-          {
-            index: true,
-            element: (
-              <Suspense fallback={<Loading />}>
-                <MemberMyPage />
-              </Suspense>
-            ),
-          },
-          ...memberMyPageRouter(),
-        ],
-      },
-    ],
-  },
-  {
-    path: "admin",
-    element: <AdminLayout />,
-    children: [
-      {
-        children: [
-          {
-            index: true,
-            element: (
-              <Suspense>
-                <Admin />
-              </Suspense>
-            ),
-          },
-          ...adminRouter(),
-        ],
-      },
->>>>>>> main
     ],
   },
 ]);

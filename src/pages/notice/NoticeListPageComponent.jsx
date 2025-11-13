@@ -147,11 +147,7 @@ const NoticeListPageComponent = () => {
               </td>
             </tr>
           ) : (
-<<<<<<< HEAD
-            filteredNotice.unshift().map(i => (
-=======
-            filteredNotice.map((i) => (
->>>>>>> main
+            filteredNotice.reverse().map(i => (
               <tr
                 key={i.noticeId} // key는 map의 최상위 요소에
                 onClick={() => addViewCount(i.noticeId)}

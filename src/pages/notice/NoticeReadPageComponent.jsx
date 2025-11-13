@@ -84,6 +84,14 @@ const NoticeReadPageComponent = () => {
       </div>
 
       {/* 목록으로 버튼 */}
+      <div className="flex justify-end mt-8">
+        <Link 
+          to={'/community/notice'} 
+          className="bg-gray-700 text-white font-bold py-2 px-6 rounded hover:bg-gray-800 transition-colors"
+        >
+          목록으로
+        </Link>
+      </div>
 
       {adminPage ? (
         <div className="flex justify-end mt-8">
