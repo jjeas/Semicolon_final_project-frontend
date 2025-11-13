@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { formatter, getOneNotice } from "../../api/noticeApi";
+import { deleteNotice } from "../../api/adminApi";
 
 const initState = {
   content: "",
@@ -15,6 +16,7 @@ const NoticeReadPageComponent = () => {
   const [notice, setNotice] = useState(initState);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const adminPage = location.pathname.startsWith("/admin");
 
   useEffect(() => {
@@ -29,6 +31,20 @@ const NoticeReadPageComponent = () => {
     };
     getOne();
   }, [id]);
+
+  const deleteHandler = () => {
+    const f = async () => {
+      try {
+        const res = await deleteNotice(id);
+        console.log(res);
+        alert("삭제가 완료되었습니다.");
+        navigate(-1);
+      } catch (error) {
+        console.error("삭제 error", error);
+      }
+    };
+    f();
+  };
 
   return (
     <div className="container mx-auto max-w-5xl p-4 md:p-8">
@@ -94,7 +110,7 @@ const NoticeReadPageComponent = () => {
       </div>
 
       {adminPage ? (
-        <div className="flex justify-end mt-8">
+        <div className="flex justify-end mt-8 gap-x-4">
           <Link
             to={"/admin/notice"}
             className="bg-gray-700 text-white font-bold py-2 px-6 rounded hover:bg-gray-800 transition-colors"
@@ -108,12 +124,13 @@ const NoticeReadPageComponent = () => {
           >
             수정
           </Link>
-          <Link
-            to={"/community/notice"}
+          <button
+            type="button"
+            onClick={deleteHandler}
             className="bg-gray-700 text-white font-bold py-2 px-6 rounded hover:bg-gray-800 transition-colors"
           >
             삭제
-          </Link>
+          </button>
         </div>
       ) : (
         <div className="flex justify-end mt-8">
