@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { formatter } from "../../api/noticeApi";
 
 const NoticeReadPageComponent = ({ notice }) => {
-  // 부모로부터 받은 notice 데이터를 구조 분해 할당하지 않고 
+  // 부모로부터 받은 notice 데이터를 구조 분해 할당하지 않고
   // 기존 코드 스타일(notice.title 등)을 유지하기 위해 매개변수에서 바로 받습니다.
 
   return (
@@ -50,7 +50,7 @@ const NoticeReadPageComponent = ({ notice }) => {
                 </span>
                 <div className="flex gap-2">
                   <a
-                    href={`http://localhost:8080${file.filePath}`}
+                    href={`http://api.jeocenter.store${file.filePath}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white text-xs px-3 py-1 bg-gray-700 rounded hover:bg-gray-800 transition-colors"
@@ -58,7 +58,7 @@ const NoticeReadPageComponent = ({ notice }) => {
                     미리보기
                   </a>
                   <a
-                    href={`http://localhost:8080/download/${file.savedName}`}
+                    href={`http://api.jeocenter.store/download/${file.savedName}`}
                     className="text-white text-xs px-3 py-1 bg-gray-700 rounded hover:bg-gray-800 transition-colors"
                   >
                     다운로드

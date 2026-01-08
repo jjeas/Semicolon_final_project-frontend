@@ -11,7 +11,7 @@ import { logout } from "./store/auth/authSlice";
 
 //모든 axios 요청에 interceptor 를 설정하여 백엔드에 요청 시 이 요청을 가로채고
 //헤더에 Authorization 을, 그 안에는 Bearer + 토큰 을 담아서 보내준다
-axios.defaults.baseURL = "http://localhost:8080"; //기본 URL 을 설정하여 모든 백엔드 요청을 가로채도록 함
+axios.defaults.baseURL = "http://api.jeocenter.store"; //기본 URL 을 설정하여 모든 백엔드 요청을 가로채도록 함
 axios.defaults.headers.common["Content-Type"] = "application/json"; //기본 헤더는 Content-Type:application.json 으로 설정
 axios.interceptors.request.use(
   //인터셉터가 가로챈 요청을 수정함

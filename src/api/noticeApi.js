@@ -1,10 +1,10 @@
 import axios from "axios";
 import { format, parseISO } from "date-fns";
 
-const API_HOST_URL = "http://localhost:8080/api/community/notice";
+const API_HOST_URL = "http://api.jeocenter.store/api/community/notice";
 
 export const getNoticeList = async (param) => {
-  const res = await axios.get(`${API_HOST_URL}/list`,{params:param});
+  const res = await axios.get(`${API_HOST_URL}/list`, { params: param });
   console.log("백엔드 notice 리스트=", res.data);
   if (res.data == null) console.log("공지사항 data 없음");
   return res.data;

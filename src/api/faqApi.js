@@ -1,14 +1,14 @@
-import axios from "axios"
+import axios from "axios";
 
-const API_HOST_URL = "http://localhost:8080/api/community/faq"
+const API_HOST_URL = "http://api.jeocenter.store/api/community/faq";
 
 export const getFaqList = async () => {
-    const res = await axios.get(`${API_HOST_URL}/list`)
-    console.log("백엔드에서 넘어온 FAQ 전체데이터=", res.data)
-    return res.data
-}
-export const getFaqCategory = async () =>{
-    const res = await axios.get(`${API_HOST_URL}/category`)
-    console.log("백엔드에서 넘어온 FAQ 카테고리=",res.data)
-    return res.data
-}
+  const res = await axios.get(`${API_HOST_URL}/list`);
+  console.log("백엔드에서 넘어온 FAQ 전체데이터=", res.data);
+  return res.data;
+};
+export const getFaqCategory = async () => {
+  const res = await axios.get(`${API_HOST_URL}/category`);
+  console.log("백엔드에서 넘어온 FAQ 카테고리=", res.data);
+  return res.data;
+};

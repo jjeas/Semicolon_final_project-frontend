@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_SERVER_HOST = "http://localhost:8080";
+const API_SERVER_HOST = "http://api.jeocenter.store";
 const host = `${API_SERVER_HOST}/api/availableTimes`;
 
 export const getAvailableTime = async (spaceId, date) => {
@@ -16,7 +16,7 @@ export const getAvailableTime = async (spaceId, date) => {
 
 export const getAvailableSpace = async (id, data) => {
   const res = await axios.post(
-    `http://localhost:8080/api/availableSpace/${id}`,
+    `http://api.jeocenter.store/api/availableSpace/${id}`,
     data
   );
   console.log("backend로부터 온데이터 ", res.data);
@@ -24,7 +24,10 @@ export const getAvailableSpace = async (id, data) => {
 };
 
 export const getTime = async (request) => {
-  const res = await axios.post(`http://localhost:8080/api/getTime`, request);
+  const res = await axios.post(
+    `http://api.jeocenter.store/api/getTime`,
+    request
+  );
   console.log("backend로부터 온데이터 ", res.data);
   return res.data;
 };
