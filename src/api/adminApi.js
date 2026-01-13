@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_SERVER_HOST = "http://www.jaeseok.store/api";
+const API_SERVER_HOST = "https://www.jaeseok.store/api";
 
 export const programModify = async (programId, data) => {
   console.log("주소확인", programId);

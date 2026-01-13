@@ -50,7 +50,7 @@ const NoticeReadPageComponent = ({ notice }) => {
                 </span>
                 <div className="flex gap-2">
                   <a
-                    href={`http://www.jaeseok.store${file.filePath}`}
+                    href={`https://www.jaeseok.store${file.filePath}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white text-xs px-3 py-1 bg-gray-700 rounded hover:bg-gray-800 transition-colors"
@@ -58,7 +58,7 @@ const NoticeReadPageComponent = ({ notice }) => {
                     미리보기
                   </a>
                   <a
-                    href={`http://www.jaeseok.store/download/${file.savedName}`}
+                    href={`https://www.jaeseok.store/download/${file.savedName}`}
                     className="text-white text-xs px-3 py-1 bg-gray-700 rounded hover:bg-gray-800 transition-colors"
                   >
                     다운로드

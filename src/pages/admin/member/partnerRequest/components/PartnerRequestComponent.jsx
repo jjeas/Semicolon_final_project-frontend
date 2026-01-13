@@ -92,7 +92,7 @@ const PartnerRequestListComponent = ({
                         <td className="px-4 py-3">{file.originalName}</td>
                         <td className="px-4 py-3 text-right">
                           <a
-                            href={`http://www.jaeseok.store/download/${file.savedName}`}
+                            href={`https://www.jaeseok.store/download/${file.savedName}`}
                             className="inline-flex items-center gap-2 px-3 py-1.5 bg-black text-white rounded-lg"
                           >
                             다운로드

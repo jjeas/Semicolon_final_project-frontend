@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_SERVER_HOST = "http://www.jaeseok.store";
+const API_SERVER_HOST = "https://www.jaeseok.store";
 const host = `${API_SERVER_HOST}/api/program`;
 
 export const getOne = async (programId) => {
