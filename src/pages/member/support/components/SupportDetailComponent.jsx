@@ -52,7 +52,7 @@ const SupportDetailComponent = ({ supportList, toListHandler }) => {
           {supportList.fileName?.length > 0 && (
             <img
               alt={supportList.fileName?.[0]}
-              src={`http://www.jaeseok.store/api/member/support/view/s_${supportList.savedName?.[0]}`}
+              src={`https://www.jaeseok.store/api/member/support/view/s_${supportList.savedName?.[0]}`}
               className="max-w-md w-full h-auto rounded-lg shadow"
             />
           )}

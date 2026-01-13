@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_HOST_URL = "http://www.jaeseok.store/api/community/faq";
+const API_HOST_URL = "https://www.jaeseok.store/api/community/faq";
 
 export const getFaqList = async () => {
   const res = await axios.get(`${API_HOST_URL}/list`);
