@@ -36,7 +36,7 @@ const GuideComponent = ({ cleanHtml, nowCategory, Createddate, guideList }) => {
                 >
                   <img
                     alt={i.fileName}
-                    src={`https://www.jaeseok.store/api/guide/view/${i.savedName}`}
+                    src={`https://api.jaeseok.store/api/guide/view/${i.savedName}`}
                     className="w-full h-auto rounded-lg object-cover mb-2"
                   />
                   <p className="mt-3 text-center text-sm text-gray-600"></p>

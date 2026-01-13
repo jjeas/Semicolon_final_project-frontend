@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const upload = async (formData) => {
   const res = await axios.post(
-    `https://www.jaeseok.store/api/guide/upload`,
+    `https://api.jaeseok.store/api/guide/upload`,
     formData
   );
   return res.data;
@@ -10,14 +10,14 @@ export const upload = async (formData) => {
 
 export const getCategory = async (category) => {
   const res = await axios.get(
-    `https://www.jaeseok.store/api/guide/${category}`
+    `https://api.jaeseok.store/api/guide/${category}`
   );
   return res.data;
 };
 
 export const getView = async (fileName) => {
   const res = await axios.get(
-    `https://www.jaeseok.store/api/view/${fileName}"`
+    `https://api.jaeseok.store/api/view/${fileName}"`
   );
   return res.data;
 };

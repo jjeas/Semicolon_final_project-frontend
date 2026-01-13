@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const rentalRequest = async (form) => {
   const res = await axios.post(
-    `https://www.jaeseok.store/api/reservation/rental`,
+    `https://api.jaeseok.store/api/reservation/rental`,
     form
   );
   return res.data;
@@ -10,14 +10,14 @@ export const rentalRequest = async (form) => {
 
 export const getRentalList = async () => {
   const res = await axios.get(
-    `https://www.jaeseok.store/api/reservation/rental`
+    `https://api.jaeseok.store/api/reservation/rental`
   );
   return res.data;
 }; // 대관 신청 목록 가져오기
 
 export const deleteRental = async (id) => {
   const res = await axios.delete(
-    `https://www.jaeseok.store/api/reservation/rental/${id}`
+    `https://api.jaeseok.store/api/reservation/rental/${id}`
   );
   return res.data;
 }; // 대관 신청 취소하기

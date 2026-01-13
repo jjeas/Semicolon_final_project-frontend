@@ -65,5 +65,5 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.18"
   },
-  "proxy": "https://www.jaeseok.store"
+  "proxy": "https://api.jaeseok.store"
 }

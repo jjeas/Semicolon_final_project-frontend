@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_HOST_URL = "https://www.jaeseok.store/api/community/schedule";
+const API_HOST_URL = "https://api.jaeseok.store/api/community/schedule";
 export const getScheduleByDate = async (startDate, endDate) => {
   const { data } = await axios.get(
     `${API_HOST_URL}?startDate=${startDate}&endDate=${endDate}`
