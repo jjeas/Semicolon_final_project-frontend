@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getCookie } from "../util/cookieUtil";
 
-const API_HOST_URL = "https://www.jaeseok.store/chat";
+const API_HOST_URL = "https://api.jaeseok.store/chat";
 
 const getAuthHeader = () => {
   const memberInfo = getCookie("member");

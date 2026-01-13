@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_HOST_URL = "https://www.jaeseok.store/api/auth";
+export const API_HOST_URL = "https://api.jaeseok.store/api/auth";
 
 export const login = async (id, password) => {
   const res = await axios.post(`${API_HOST_URL}/login`, {

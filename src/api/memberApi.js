@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_HOST_URL_REG = "https://www.jaeseok.store/api/registration";
+const API_HOST_URL_REG = "https://api.jaeseok.store/api/registration";
 // const getAuthHeader = () => {
 //   const cookie = getCookie("member")
 //   console.log("쿠키는",cookie)
@@ -14,14 +14,14 @@ const API_HOST_URL_REG = "https://www.jaeseok.store/api/registration";
 
 export const getOne = async () => {
   const res = await axios.get(
-    `https://www.jaeseok.store/api/member/memberEdit`
+    `https://api.jaeseok.store/api/member/memberEdit`
   );
   return res.data;
 };
 
 export const modify = async (userData) => {
   const res = await axios.put(
-    `https://www.jaeseok.store/api/member/memberEdit`,
+    `https://api.jaeseok.store/api/member/memberEdit`,
     userData
   );
   console.log("수정완료 변경할 멤버정보=", userData);
@@ -30,7 +30,7 @@ export const modify = async (userData) => {
 
 export const changePassword = async (data) => {
   const res = await axios.post(
-    `https://www.jaeseok.store/api/member/passwordEdit`,
+    `https://api.jaeseok.store/api/member/passwordEdit`,
     data
   );
   return res.data;
@@ -38,7 +38,7 @@ export const changePassword = async (data) => {
 
 export const partnerReqFileRegister = async (formData) => {
   const res = await axios.post(
-    `https://www.jaeseok.store/api/partner/partnerRequest`,
+    `https://api.jaeseok.store/api/partner/partnerRequest`,
     formData
   );
   return res.data;
@@ -46,19 +46,19 @@ export const partnerReqFileRegister = async (formData) => {
 
 export const supportReqRegister = async (formData) => {
   const res = await axios.post(
-    `https://www.jaeseok.store/api/support/write`,
+    `https://api.jaeseok.store/api/support/write`,
     formData
   );
   return res.data;
 };
 
 export const supportGetList = async () => {
-  const res = await axios.get(`https://www.jaeseok.store/api/support`);
+  const res = await axios.get(`https://api.jaeseok.store/api/support`);
   return res.data;
 };
 
 export const supportGetOne = async (no) => {
-  const res = await axios.get(`https://www.jaeseok.store/api/support/${no}`);
+  const res = await axios.get(`https://api.jaeseok.store/api/support/${no}`);
   return res.data;
 };
 
