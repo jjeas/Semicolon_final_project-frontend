@@ -35,7 +35,7 @@ const NaverCallbackPage = () => {
     const naverLogin = async () => {
       try {
         const res = await axios.post(
-          "http://api.jeocenter.store/api/auth/naver/login",
+          "http://www.jaeseok.store/api/auth/naver/login",
           {
             code,
           }

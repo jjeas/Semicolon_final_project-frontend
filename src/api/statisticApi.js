@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_HOST_URL = "http://api.jeocenter.store/api/admin/stat";
+const API_HOST_URL = "http://www.jaeseok.store/api/admin/stat";
 
 export const getAgeGenderStat = async () => {
   const res = await axios.get(`${API_HOST_URL}/ageGender`);

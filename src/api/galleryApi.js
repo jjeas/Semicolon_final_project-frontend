@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_HOST_URL = "http://api.jeocenter.store/api/community/gallery";
+const API_HOST_URL = "http://www.jaeseok.store/api/community/gallery";
 
 export const register = async (dto) => {
   const res = await axios.post(`${API_HOST_URL}/admin`, dto);
@@ -14,7 +14,7 @@ export const fileRegister = async (file) => {
     formData.append("file", file[i]);
   }
   const res = await axios.post(
-    `http://api.jeocenter.store/api/upload/gallery`,
+    `http://www.jaeseok.store/api/upload/gallery`,
     formData
   );
   return res.data;
@@ -50,7 +50,7 @@ export const deleteGallery = async (id) => {
 
 export const deleteFile = async (id) => {
   const res = await axios.delete(
-    `http://api.jeocenter.store/api/upload/gallery/${id}`
+    `http://www.jaeseok.store/api/upload/gallery/${id}`
   );
   console.log("갤러리 파일 삭제 완료");
   return res.data;
