@@ -28,7 +28,7 @@ const KakaoCallbackPage = () => {
     const kakaoLogin = async () => {
       try {
         const res = await axios.post(
-          "http://api.jeocenter.store/api/auth/kakao/login",
+          "http://www.jaeseok.store/api/auth/kakao/login",
           {
             code,
           }

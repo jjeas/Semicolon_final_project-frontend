@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_HOST_URL = "http://api.jeocenter.store/api/lesson";
+const API_HOST_URL = "http://www.jaeseok.store/api/lesson";
 
 export const getLessonList = async (param) => {
   const { data } = await axios.get(`${API_HOST_URL}`, { params: param });
@@ -16,7 +16,7 @@ export const getOneLesson = async (id) => {
 
 export const checkRegistration = async (id) => {
   const { data } = await axios.get(
-    `http://api.jeocenter.store/api/registration/check/${id}`
+    `http://www.jaeseok.store/api/registration/check/${id}`
   );
   console.log("중복 수강신청 체크=", data);
   return data;
